@@ -1,4 +1,4 @@
-# School Library
+# School-Library (Object Oriented Programming)
 
 > A OOP school library.
 
