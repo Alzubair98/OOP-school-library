@@ -1,6 +1,6 @@
 # Morse Code
 
-> A program that decodes morse code.
+> A OOP school library.
 
 ## Built With :hammer_and_wrench:
 
