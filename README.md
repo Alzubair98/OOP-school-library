@@ -1,4 +1,4 @@
-# Morse Code
+# School Library
 
 > A OOP school library.
 
