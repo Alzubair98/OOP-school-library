@@ -6,7 +6,6 @@
 
 - **GitHub flow:** Correct use of Branches for deployment and features development.
 - **Linters Check:** Local and Pull Request check for errors, bugs and stylistic errors in code.
-- **DataBase** SQL database is used in this project.
 
 ## Authors :writing_hand: :busts_in_silhouette:
 
