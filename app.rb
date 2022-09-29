@@ -115,10 +115,10 @@ def create_rental
   book_list
   b_rental = gets.chomp.to_i
 
-  person = $people[p_rental]
-  book = $books[b_rental]
+  r_person = $people[p_rental-1]
+  r_book = $books[b_rental-1]
 
-  $rental << Rental.new(date = d_rental, person, book)
+  $rental << Rental.new(date = d_rental, r_person, r_book)
   puts 'Rental Created'
 end
 
@@ -128,6 +128,8 @@ def rental_by_id
   else
     print 'Enter Person ID: '
     id = gets.chomp.to_i
-    puts "Date: #{r.date}, book: #{r.book.title}," if r.person.id == id
+    $rental.each do |r|
+      puts "Date: #{r.date}, book: #{r.book.title}," if r.person.id == id
+    end
   end
 end
