@@ -28,7 +28,7 @@ def sort_people
   end
 end
 
-def add_student(classroom, age, name, parent_permission: true)
+def add_student(classroom, age, name, parent_permission)
   $students << Student.new(classroom, age, name, parent_permission)
 end
 
@@ -49,7 +49,7 @@ def create_person
     p_student = gets.chomp
     case p_student.downcase
     when 'y'
-      add_student(classroom = 1, age = s_age, name = s_name)
+      add_student(classroom = 1, age = s_age, name = s_name, parent_permission = true)
       puts 'Student created :)'
     when 'n'
       add_student(classroom = 1, age = s_age, name = s_name, parent_permission = false)
@@ -100,12 +100,13 @@ def people_list
 end
 
 def create_rental
+  $people = []
   $people.concat($students)
   $people.concat($teachers)
 
   puts 'You are going to create a rental'
 
-  print 'Please enter a date'
+  print 'Please enter a date: '
   d_rental = gets.chomp
 
   people_list
@@ -114,18 +115,19 @@ def create_rental
   book_list
   b_rental = gets.chomp.to_i
 
-  $rental << Rental.new(date = d_rental, person = p_rental, book = b_rental)
+  person = $people[p_rental]
+  book = $books[b_rental]
+
+  $rental << Rental.new(date = d_rental, person, book)
   puts 'Rental Created'
 end
 
 def rental_by_id
-  if $people.empty?
+  if $rental.empty?
     puts 'there is no one to look for'
   else
     print 'Enter Person ID: '
     id = gets.chomp.to_i
-    $rental.each do |r|
-      puts "Date: #{r.date}, book: #{r.book.title}," if r.person.id == id
-    end
+    puts "Date: #{r.date}, book: #{r.book.title}," if r.person.id == id
   end
 end
