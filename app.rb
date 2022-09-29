@@ -115,8 +115,8 @@ def create_rental
   book_list
   b_rental = gets.chomp.to_i
 
-  r_person = $people[p_rental-1]
-  r_book = $books[b_rental-1]
+  r_person = $people[p_rental - 1]
+  r_book = $books[b_rental - 1]
 
   $rental << Rental.new(date = d_rental, r_person, r_book)
   puts 'Rental Created'
