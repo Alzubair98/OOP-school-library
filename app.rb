@@ -10,7 +10,7 @@ $teachers = []
 $rental = []
 $people = []
 
-def sort_books(_books)
+def sort_books
   if $books.empty?
     puts 'There is no books :('
   else
@@ -119,9 +119,13 @@ def create_rental
 end
 
 def rental_by_id
-  print 'Enter Person ID: '
-  id = gets.chomp.to_i
-  $rental.each do |r|
-    puts "Date: #{r.date}, book: #{r.book.title}," if r.person.id == id
+  if $people.empty?
+    puts 'there is no one to look for'
+  else
+    print 'Enter Person ID: '
+    id = gets.chomp.to_i
+    $rental.each do |r|
+      puts "Date: #{r.date}, book: #{r.book.title}," if r.person.id == id
+    end
   end
 end
