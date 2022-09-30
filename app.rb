@@ -126,6 +126,7 @@ def rental_by_id
   if $rental.empty?
     puts 'there is no one to look for'
   else
+    people_list
     print 'Enter Person ID: '
     id = gets.chomp.to_i
     $rental.each do |r|
