@@ -11,7 +11,8 @@ def main
         4- Create a book
         5- Create a rental
         6- List all rentals for a person by their own id
-        7- Exit'
+        7- Exit
+        '
     choice = gets.chomp.to_i
     case choice
     when 1 then sort_books

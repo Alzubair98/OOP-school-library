@@ -32,8 +32,8 @@ def add_student(classroom, age, name, parent_permission)
   $students << Student.new(classroom, age, name, parent_permission)
 end
 
-def add_teacher(name, age, specialization)
-  $teachers << Teacher.new(name, age, specialization)
+def add_teacher(age, name, specialization)
+  $teachers << Teacher.new(age, name, specialization)
 end
 
 def create_person
@@ -64,7 +64,7 @@ def create_person
     t_age = gets.chomp
     print 'Enter specialization: '
     t_specialization = gets.chomp
-    add_teacher(name = t_name, age = t_age, specialization = t_specialization)
+    add_teacher(t_age, t_name, specialization = t_specialization)
     puts 'Teacher created :)'
   else
     puts 'You have enterd invalid number :('
@@ -101,24 +101,24 @@ end
 
 def create_rental
   $people = []
-  $people.concat($students)
-  $people.concat($teachers)
+  ($people.concat $students)
+  ($people.concat $teachers)
 
   puts 'You are going to create a rental'
 
   print 'Please enter a date: '
-  d_rental = gets.chomp
+  date_rental = gets.chomp
 
   people_list
-  p_rental = gets.chomp.to_i
+  person_rental = gets.chomp.to_i
 
   book_list
-  b_rental = gets.chomp.to_i
+  book_rental = gets.chomp.to_i
 
-  r_person = $people[p_rental - 1]
-  r_book = $books[b_rental - 1]
+  r_person = $people[person_rental - 1]
+  r_book = $books[book_rental - 1]
 
-  $rental << Rental.new(date = d_rental, r_person, r_book)
+  $rental << Rental.new(date_rental, r_person, r_book)
   puts 'Rental Created'
 end
 
@@ -129,7 +129,12 @@ def rental_by_id
     print 'Enter Person ID: '
     id = gets.chomp.to_i
     $rental.each do |r|
-      puts "Date: #{r.date}, book: #{r.book.title}," if r.person.id == id
+      if r.person.id == id
+        puts " #{r.person.name.capitalize} has the following rentals:-
+      Date: #{r.date}, book: #{r.book.title},\n"
+      else
+        puts 'it seems like you entered wrong id'
+      end
     end
   end
 end

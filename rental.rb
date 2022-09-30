@@ -1,5 +1,5 @@
 class Rental
-  attr_accessor :date
+  attr_accessor :date, :person, :book
 
   def initialize(date, person, book)
     @date = date
@@ -12,8 +12,8 @@ class Rental
     @book.rental << self unless book.rental.include?(slef)
   end
 
-  def person=(person)
-    @person = person
-    person.rental << self unless person.rental.include?(slef)
+  def person=(_person)
+    @book = book
+    @book.rental << self unless book.rental.include?(slef)
   end
 end
