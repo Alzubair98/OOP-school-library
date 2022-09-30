@@ -92,7 +92,7 @@ end
 
 def people_list
   puts 'Choose a person from the list by number:-'
-  i = 0
+  j = 0
   while i < $people.length
     puts "#{i + 1}- Name: #{$people[i].name} ID: #{$people[i].id}, Age: #{$people[i].age}"
     i += 1
