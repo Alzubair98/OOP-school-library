@@ -7,7 +7,7 @@
 - **GitHub flow:** Correct use of Branches for deployment and features development.
 - **Linters Check:** Local and Pull Request check for errors, bugs and stylistic errors in code.
 
-## Authors :writing_hand: :busts_in_silhouette:
+## Author :writing_hand: :busts_in_silhouette:
 
 :man_technologist: **Alzubair Alqaraghuli** :writing_hand:
 
