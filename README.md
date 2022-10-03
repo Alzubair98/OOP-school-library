@@ -17,9 +17,9 @@
 
 :man_technologist: **Abraha Kahsay** :writing_hand:
 
-- GitHub: [@Abraha Kahsay](https://github.com/Alzubair98)
-- Twitter: [@Abraha Kahsay](https://twitter.com/FitZubair)
-- LinkedIn: [@Abraha Kahsay](https://www.linkedin.com/in/alzubair-alqaraghuli-272918233/)
+- GitHub: [@AbrahaKahsay](https://github.com/AbrahaKahsay)
+- Twitter: [@abraha_ka](https://twitter.com/abraha_ka)
+- LinkedIn: [abraha-kahsay](https://www.linkedin.com/in/abraha-kahsay/)
 
 ## 🤝 Contributing
 
