@@ -1,7 +1,7 @@
 require './app'
 
 def main
-  puts "\nWELCOME TO OUR SCHOOL LIBRARY \n" 
+  puts "\nWELCOME TO OUR SCHOOL LIBRARY \n"
   button = true
   while button
     puts ' '
