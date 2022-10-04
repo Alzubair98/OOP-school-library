@@ -125,7 +125,7 @@ def book_list
   puts 'Choose a book from the list:-'
   i = 0
   while i < $books.length
-    puts "#{i + 1}- Title: #{$books[i]["title"]} Author: #{$books[i]["author"]}"
+    puts "#{i + 1}- Title: #{$books[i]['title']} Author: #{$books[i]['author']}"
     i += 1
   end
 end
@@ -134,7 +134,7 @@ def people_list
   puts 'Choose a person from the list by number:-'
   i = 0
   while i < $people.length
-    puts "#{i + 1}- Name: #{$people[i]["name"]} ID: #{$people[i]["id"]}, Age: #{$people[i]["age"]}"
+    puts "#{i + 1}- Name: #{$people[i]['name']} ID: #{$people[i]['id']}, Age: #{$people[i]['age']}"
     i += 1
   end
 end
@@ -180,10 +180,10 @@ def add_rentals_to_file
   rentals_list = []
   $rental.each do |r|
     rentals_list << if r.instance_of?(Hash)
-                     r
-                   else
-                     { date: r.date, id: r.person["id"], title: r.book["title"] }
-                   end
+                      r
+                    else
+                      { date: r.date, id: r.person['id'], title: r.book['title'] }
+                    end
   end
   File.write('rentals.json', JSON.pretty_generate(rentals_list))
 end
