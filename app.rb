@@ -16,7 +16,6 @@ else
 end
 $students = []
 $teachers = []
-$rental = []
 if File.exist?('people.json')
   $people = if File.zero?('people.json')
               []
@@ -25,6 +24,16 @@ if File.exist?('people.json')
             end
 else
   puts 'There is no people file , maybe you need to create one'
+end
+
+if File.exist?('rentals.json')
+  $rental = if File.zero?('rentals.json')
+              []
+            else
+              JSON.parse(File.read('rentals.json'))
+            end
+else
+  puts 'There is no rentals file , maybe you need to create one'
 end
 
 def sort_books
@@ -116,7 +125,7 @@ def book_list
   puts 'Choose a book from the list:-'
   i = 0
   while i < $books.length
-    puts "#{i + 1}- Title: #{$books[i].title} Author: #{$books[i].author}" # change this
+    puts "#{i + 1}- Title: #{$books[i]["title"]} Author: #{$books[i]["author"]}"
     i += 1
   end
 end
@@ -125,7 +134,7 @@ def people_list
   puts 'Choose a person from the list by number:-'
   i = 0
   while i < $people.length
-    puts "#{i + 1}- Name: #{$people[i].name} ID: #{$people[i].id}, Age: #{$people[i].age}"
+    puts "#{i + 1}- Name: #{$people[i]["name"]} ID: #{$people[i]["id"]}, Age: #{$people[i]["age"]}"
     i += 1
   end
 end
@@ -165,6 +174,18 @@ def create_rental
 
   $rental << Rental.new(date_rental, r_person, r_book)
   puts 'Rental Created'
+end
+
+def add_rentals_to_file
+  rentals_list = []
+  $rental.each do |r|
+    rentals_list << if r.instance_of?(Hash)
+                     r
+                   else
+                     { date: r.date, id: r.person["id"], title: r.book["title"] }
+                   end
+  end
+  File.write('rentals.json', JSON.pretty_generate(rentals_list))
 end
 
 def rental_by_id
