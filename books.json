@@ -6,5 +6,9 @@
   {
     "title": "book2",
     "author": "auth2"
+  },
+  {
+    "title": "book3",
+    "author": "auth3"
   }
 ]

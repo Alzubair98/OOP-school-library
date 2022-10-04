@@ -80,7 +80,7 @@ def create_person
   end
 end
 
-def create_book
+def create_book   
   puts 'You are going to create a book'
   print 'Please enter book title: '
   b_title = gets.chomp
@@ -92,7 +92,11 @@ end
 
 def add_book_to_file
   books_list = []
-  $books.each { |b| books_list << {"title": b.title, "author": b.author} }
+  $books.each { |b| if b.class == Hash
+                    books_list << b 
+                    else  
+                    books_list << {"title": b.title, "author": b.author}
+                    end }
   File.write("books.json", JSON.pretty_generate(books_list))
 end
 
