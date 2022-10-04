@@ -3,12 +3,13 @@ require './person_class'
 require './student_class'
 require './teacher_class'
 require './rental'
+require 'json'
 
 if File.exists?("books.json")
   if File.zero?("books.json")
     $books = []
-  else 
-    $books = File.read("books.json")
+  else
+    $books = JSON.parse(File.read("books.json"))
   end
 else
   puts "There is no books file , maybe you need to create one"
@@ -23,7 +24,7 @@ def sort_books
     puts 'There is no books :('
   else
     puts 'Here is the Books :)'
-    $books.each { |b| puts "Title: #{b.title}, Author:#{b.author}" }
+    $books.each { |b| b.each{|k,v| puts "#{k}: #{v}"} }
   end
 end
 
@@ -90,14 +91,16 @@ def create_book
 end
 
 def add_book_to_file
-  File.write("books.json", $books)
+  books_list = []
+  $books.each { |b| books_list << {"title": b.title, "author": b.author} }
+  File.write("books.json", JSON.pretty_generate(books_list))
 end
 
 def book_list
   puts 'Choose a book from the list:-'
   i = 0
   while i < $books.length
-    puts "#{i + 1}- Title: #{$books[i].title} Author: #{$books[i].author}"
+    puts "#{i + 1}- Title: #{$books[i].title} Author: #{$books[i].author}" #change this
     i += 1
   end
 end
