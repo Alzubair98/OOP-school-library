@@ -19,14 +19,13 @@ $teachers = []
 $rental = []
 if File.exist?('people.json')
   $people = if File.zero?('people.json')
-            []
+              []
             else
               JSON.parse(File.read('people.json'))
             end
 else
   puts 'There is no people file , maybe you need to create one'
 end
-
 
 def sort_books
   if $books.empty?
@@ -38,13 +37,13 @@ def sort_books
 end
 
 def sort_people
-  if !$people.empty?
-    $people.each{|p| p.each { |k, v| puts "#{k}: #{v}"}}
-  # if !$students.empty? || !$teachers.empty?
-  #   $students.each { |s| puts "Student name: #{s.name}, ID: #{s.id}, AGE:#{s.age}" }
-  #   $teachers.each { |t| puts "Teacher name: #{t.name}, ID: #{t.id}, AGE:#{t.age}" }
-  else
+  if $people.empty?
     puts 'there is no one here :('
+  else
+    $people.each { |p| p.each { |k, v| puts "#{k}: #{v}" } }
+    # if !$students.empty? || !$teachers.empty?
+    #   $students.each { |s| puts "Student name: #{s.name}, ID: #{s.id}, AGE:#{s.age}" }
+    #   $teachers.each { |t| puts "Teacher name: #{t.name}, ID: #{t.id}, AGE:#{t.age}" }
   end
 end
 
@@ -131,22 +130,19 @@ def people_list
   end
 end
 
-
-
 def add_people_to_file
   ($people.concat $students)
-  ($people.concat $teachers) 
+  ($people.concat $teachers)
   people_list = []
   $people.each do |p|
     people_list << if p.instance_of?(Hash)
-                    p
-                  else
-                    { name: p.name, id: p.id , age: p.age }
-                  end
+                     p
+                   else
+                     { name: p.name, id: p.id, age: p.age }
+                   end
   end
   File.write('people.json', JSON.pretty_generate(people_list))
 end
-
 
 def create_rental
   $people = []
