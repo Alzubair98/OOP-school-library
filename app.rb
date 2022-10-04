@@ -154,7 +154,6 @@ def add_people_to_file
 end
 
 def create_rental
-  $people = []
   ($people.concat $students)
   ($people.concat $teachers)
 
