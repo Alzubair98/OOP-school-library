@@ -5,14 +5,14 @@ require './teacher_class'
 require './rental'
 require 'json'
 
-if File.exists?("books.json")
-  if File.zero?("books.json")
-    $books = []
-  else
-    $books = JSON.parse(File.read("books.json"))
-  end
+if File.exist?('books.json')
+  $books = if File.zero?('books.json')
+             []
+           else
+             JSON.parse(File.read('books.json'))
+           end
 else
-  puts "There is no books file , maybe you need to create one"
+  puts 'There is no books file , maybe you need to create one'
 end
 $students = []
 $teachers = []
@@ -24,7 +24,7 @@ def sort_books
     puts 'There is no books :('
   else
     puts 'Here is the Books :)'
-    $books.each { |b| b.each{|k,v| puts "#{k}: #{v}"} }
+    $books.each { |b| b.each { |k, v| puts "#{k}: #{v}" } }
   end
 end
 
@@ -80,7 +80,7 @@ def create_person
   end
 end
 
-def create_book   
+def create_book
   puts 'You are going to create a book'
   print 'Please enter book title: '
   b_title = gets.chomp
@@ -92,19 +92,21 @@ end
 
 def add_book_to_file
   books_list = []
-  $books.each { |b| if b.class == Hash
-                    books_list << b 
-                    else  
-                    books_list << {"title": b.title, "author": b.author}
-                    end }
-  File.write("books.json", JSON.pretty_generate(books_list))
+  $books.each do |b|
+    books_list << if b.instance_of?(Hash)
+                    b
+                  else
+                    { title: b.title, author: b.author }
+                  end
+  end
+  File.write('books.json', JSON.pretty_generate(books_list))
 end
 
 def book_list
   puts 'Choose a book from the list:-'
   i = 0
   while i < $books.length
-    puts "#{i + 1}- Title: #{$books[i].title} Author: #{$books[i].author}" #change this
+    puts "#{i + 1}- Title: #{$books[i].title} Author: #{$books[i].author}" # change this
     i += 1
   end
 end
