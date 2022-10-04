@@ -23,6 +23,7 @@ def main
     when 5 then create_rental
     when 6 then rental_by_id
     when 7
+      add_book_to_file
       puts 'See you later'
       button = false
     else

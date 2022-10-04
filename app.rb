@@ -4,7 +4,15 @@ require './student_class'
 require './teacher_class'
 require './rental'
 
-$books = []
+if File.exists?("books.json")
+  if File.zero?("books.json")
+    $books = []
+  else 
+    $books = File.read("books.json")
+  end
+else
+  puts "There is no books file , maybe you need to create one"
+end
 $students = []
 $teachers = []
 $rental = []
@@ -79,6 +87,10 @@ def create_book
   b_author = gets.chomp
   $books << Book.new(title = b_title, author = b_author)
   puts 'Book Created :)'
+end
+
+def add_book_to_file
+  File.write("books.json", $books)
 end
 
 def book_list
