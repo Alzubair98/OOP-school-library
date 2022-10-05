@@ -2,8 +2,10 @@ require_relative '../student_class'
 
 describe Student do
   context 'check if a student class is created' do
+
+    student = Student.new('CR1', 18, 'Abraha', true)
+
     it 'creates a student' do
-      student = Student.new('CR1', 18, 'Abraha', true)
       classroom = student.classroom
       age = student.age
       name = student.name
@@ -12,8 +14,9 @@ describe Student do
       expect(age).to eq(18)
       expect(name).to eq('Abraha')
       expect(parent_permission).to be true
-      
-      # test the method # ABRAHA SPERATE THESE !!!!!!
+    end
+
+    it "checks for a student wheather it plays hooky" do
       play = student.play_hooky
       expect(play).to eq("¯\(ツ)/¯")
     end
