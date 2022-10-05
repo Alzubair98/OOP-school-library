@@ -1,10 +1,12 @@
 class Nameable
   def correct_name
-    raise NotImplementedError, 'Implement!!'
+    raise NotImplementedError, 'Implemnt1'
   end
 end
 
 class BaseDecorator < Nameable
+  attr_reader :nameable
+
   def initialize(nameable)
     @nameable = nameable
   end
