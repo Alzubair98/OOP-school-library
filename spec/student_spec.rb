@@ -12,6 +12,13 @@ describe Student do
       expect(age).to eq(18)
       expect(name).to eq('Abraha')
       expect(parent_permission).to be true
+      
+      # test the method
+      play = student.play_hooky
+      expect(play).to eq("¯\(ツ)/¯")
     end
+
   end
+
 end
+
