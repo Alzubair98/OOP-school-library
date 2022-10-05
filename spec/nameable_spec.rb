@@ -1,11 +1,11 @@
 require_relative '../nameable'
+require_relative '../person_class.rb'
 
 describe Nameable do
     context "Checks the Nameable class" do
         it "checks for correct name" do
             correct = Nameable.new
-            correct.correct_name
-            expect(correct).to raise_error(NotImplementedError: "Implement!!") 
+            expect{ correct.correct_name }.to raise_error(NotImplementedError)
         end
     end
 end
@@ -20,11 +20,20 @@ describe BaseDecorator do
 end
 
 describe CapitalizeDecorator do
+
+    $person = Person.new(24, 'alzubairalqaraghuli')
+
     context "Checks the CapitalizeDecorator class" do
         it "checks for create an object" do
-            correct = CapitalizeDecorator.new
-            correct.correct_name
-            # expect(correct).to eq(.....) Alzubair 
+            correct = CapitalizeDecorator.new($person)
+            expect(correct.correct_name).to eq("Alzubairalqaraghuli")
+        end
+    end
+
+    context "check the trimmer method" do
+        it "trim the name" do
+            trimmer = TrimmerDecorator.new($person)
+            expect(trimmer.correct_name).to eq('alzubairal')
         end
     end
 end
