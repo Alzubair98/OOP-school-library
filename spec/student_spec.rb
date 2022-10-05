@@ -13,7 +13,7 @@ describe Student do
       expect(name).to eq('Abraha')
       expect(parent_permission).to be true
       
-      # test the method
+      # test the method # ABRAHA SPERATE THESE !!!!!!
       play = student.play_hooky
       expect(play).to eq("¯\(ツ)/¯")
     end
