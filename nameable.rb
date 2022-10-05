@@ -5,6 +5,8 @@ class Nameable
 end
 
 class BaseDecorator < Nameable
+  attr_reader :nameable
+
   def initialize(nameable)
     @nameable = nameable
   end
