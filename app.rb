@@ -181,7 +181,7 @@ def add_rentals_to_file
     rentals_list << if r.instance_of?(Hash)
                       r
                     else
-                      { date: r.date, id: r.person['id'], title: r.book['title'], name:r.person["name"] }
+                      { date: r.date, id: r.person['id'], title: r.book['title'], name: r.person['name'] }
                     end
   end
   File.write('rentals.json', JSON.pretty_generate(rentals_list))
@@ -195,9 +195,9 @@ def rental_by_id
     print 'Enter Person ID: '
     id = gets.chomp.to_i
     $rental.each do |r|
-      if r["id"] == id
-        puts " #{r["name"].capitalize} has the following rentals:-
-      Date: #{r["date"]}, book: #{r["title"]}.\n"
+      if r['id'] == id
+        puts " #{r['name'].capitalize} has the following rentals:-
+      Date: #{r['date']}, book: #{r['title']}.\n"
       else
         puts 'it seems like you entered wrong id'
       end
